@@ -14,8 +14,8 @@ export class TrackDetailComponent implements OnInit {
     private _trackId: string = null;
     pageName: string = "Detail: ";
     track: Track = null;
+    previewAudio: any = null; // The Audio object is not yet defined in TypeScript
     loadingTrack: boolean = true;
-    previewPlaying: boolean = false;
     albumArtworkLoaded: boolean = false;
     errorMessage: string = null;
 
@@ -28,10 +28,22 @@ export class TrackDetailComponent implements OnInit {
         this._trackService.getTrack(this._trackId)
             .subscribe(track => {
                 this.track = track;
+                this.previewAudio = new Audio(track.preview_url);
+                this.previewAudio.onended = () => this.previewAudio.pause();
                 this.loadingTrack = false;
                 console.info(track);
             },
             error => this.errorMessage = <any>error);
+    }
+
+    playPausePreview(): void {
+        if (this.previewAudio.paused || this.previewAudio.ended) {
+            this.previewAudio.load();
+            this.previewAudio.play();
+        }
+        else {
+            this.previewAudio.pause();
+        }
     }
 
     getArtistsString(): string {

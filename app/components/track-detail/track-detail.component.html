@@ -16,17 +16,27 @@
                 </a>
             </div>
             <h2>{{track.name}}</h2>
-            <h3>by {{getArtistsString()}}</h3>
-            <h4>on {{track.album.name}}</h4>
+            <ul id="track-info-data">
+                <li title="Artist"><i class="fa fa-fw {{track.artists.length == 1 ? 'fa-user' : 'fa-users'}}" aria-hidden="true"></i> {{getArtistsString()}}</li>
+                <li title="Album"><i class="fa fa-fw fa-music"></i> {{track.album.name}}</li>
+                <li class="separator"></li>
+                <li title="Duration"><i class="fa fa-fw fa-clock-o" aria-hidden="true"></i> {{track.duration_ms | date:'m:s'}}</li>
+                <li title="Popularity (%)"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i> {{track.popularity}}</li>
+                <li *ngIf="track.explicit"><i class="fa fa-fw fa-exclamation-circle" aria-hidden="true"></i> Explicit content</li>
+            </ul>
             <ul id="track-detail-links">
-                <li>{{previewPlaying ? "Stop" : "Play"}} preview</li>
+                <li (click)="playPausePreview()">{{previewAudio.paused || previewAudio.ended ? "Play" : "Stop"}} preview</li>
                 <li><a [href]="track.uri">Open in Spotify</a></li>
             </ul>
         </div>
         <div class="panel panel-artwork">
-            <img [ngClass]="{'album-artwork': true, 'dim': previewPlaying, 'fadeIn-quick': albumArtworkLoaded}" (load)="albumArtworkLoaded = true" [src]="track.album.artworks[2].url" [title]="track.album.name"/>
-            <div class="preview-playing-icon" *ngIf="previewPlaying">
-                <i class="fa fa-volume-up" aria-hidden="true"></i>
+            <img (load)="albumArtworkLoaded = true" [ngClass]="{'album-artwork': true, 'dim': !previewAudio.paused && !previewAudio.ended, 'fadeIn-quick': albumArtworkLoaded}"
+                [src]="track.album.artworks[2].url" [title]="track.album.name"/>
+            <div *ngIf="!previewAudio.paused && !previewAudio.ended" class="equalizer-container">
+                <div class="equalizer">
+                    <div *ngFor="let idx of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]" class="equalizer-bar randomHeight-infinite"
+                        [style.animationDelay]="(idx / 10) + 's'"></div>
+                </div>
             </div>
         </div>
     </div>

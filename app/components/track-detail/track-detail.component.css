@@ -22,12 +22,7 @@ a {
 }
 
 h2 {
-    margin-bottom: 0;
     font-size: 3em;
-}
-
-h3 {
-    margin-top: 0;
 }
 
 .panel {
@@ -36,7 +31,48 @@ h3 {
 }
 
 .panel-info {
+    min-width: 250px;
     max-width: 20%;
+}
+
+#track-info-data {
+    padding: 0;
+    list-style-type: none;
+}
+
+#track-info-data li {
+    margin: 10px 0;
+    font-size: 1.3em;
+}
+
+#track-info-data li.separator::after {
+    content: "\00a0";
+}
+
+#track-info-data .fa {
+    margin-right: 5px;
+}
+
+#track-detail-links {
+    margin-top: 40px;
+    padding: 0;
+    list-style-type: none;
+}
+
+#track-detail-links li {
+    display: inline-block;
+    margin-right: 5px;
+    padding: 5px;
+
+    cursor: pointer;
+    color: #80cbc4;
+    border: 1px solid #80cbc4;
+    border-radius: 5px;
+}
+
+#track-detail-links li:hover {
+    color: black;
+    background-color: #80cbc4;
 }
 
 .panel-artwork {
@@ -59,7 +95,7 @@ h3 {
     filter: brightness(80%);
 }
 
-.preview-playing-icon {
+.equalizer-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -68,27 +104,12 @@ h3 {
     height: 100%;
     position: absolute;
     top: 0;
-
-    font-size: 10em;
-    color: #80cbc4;
 }
 
-#track-detail-links {
-    padding: 0;
-    list-style-type: none;
-}
+.equalizer {
+    height: 200px;
+    width: 100%;
+    align-items: center !important;
 
-#track-detail-links li {
-    display: inline-block;
-    margin-right: 5px;
-    padding: 5px;
-
-    color: #80cbc4;
-    border: 1px solid #80cbc4;
-    border-radius: 5px;
-}
-
-#track-detail-links li:hover {
-    color: black;
-    background-color: #80cbc4;
+    animation: opacity 0.3s ease-in;
 }

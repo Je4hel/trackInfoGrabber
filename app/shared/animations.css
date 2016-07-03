@@ -37,3 +37,22 @@
 .leftToRight-infinite {
     animation: moveRight cubic-bezier(.3,.8,.7,.2) 3s infinite;
 }
+
+@keyframes randomHeight {
+    0% {height: 0;}
+    10% {height: 20%}
+    20% {height: 15%;}
+    30% {height: 60%;}
+    40% {height: 40%;}
+    50% {height: 85%;}
+    60% {height: 70%;}
+    70% {height: 40%;}
+    80% {height: 55%;}
+    85% {height: 35%;}
+    95% {height: 50%;}
+    100% {height: 0%;}
+}
+
+.randomHeight-infinite {
+    animation: randomHeight 3s linear infinite;
+}
