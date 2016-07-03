@@ -39,13 +39,19 @@ h3 {
     max-width: 20%;
 }
 
+.panel-artwork {
+    width: 640px;
+}
+
 #back-button {
     font-size: 1.2em;
     color: #80cbc4;
 }
 
 .album-artwork {
+    opacity: 0;
     border-radius: 3px;
+    box-shadow: 0 0 10px 0px black;
 }
 
 .dim {

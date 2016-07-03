@@ -16,6 +16,7 @@ export class TrackDetailComponent implements OnInit {
     track: Track = null;
     loadingTrack: boolean = true;
     previewPlaying: boolean = false;
+    albumArtworkLoaded: boolean = false;
     errorMessage: string = null;
 
     constructor(private _routeParams: RouteParams, private _router: Router, private _trackService: TrackService) {

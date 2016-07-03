@@ -23,8 +23,8 @@
                 <li><a [href]="track.uri">Open in Spotify</a></li>
             </ul>
         </div>
-        <div class="panel">
-            <img [ngClass]="{'album-artwork': true, 'dim': previewPlaying, 'fadeIn-quick': true}" [src]="track.album.artworks[2].url" [title]="track.album.name"/>
+        <div class="panel panel-artwork">
+            <img [ngClass]="{'album-artwork': true, 'dim': previewPlaying, 'fadeIn-quick': albumArtworkLoaded}" (load)="albumArtworkLoaded = true" [src]="track.album.artworks[2].url" [title]="track.album.name"/>
             <div class="preview-playing-icon" *ngIf="previewPlaying">
                 <i class="fa fa-volume-up" aria-hidden="true"></i>
             </div>
