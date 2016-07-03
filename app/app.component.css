@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css?family=Bungee+Shade|Roboto');
+
+body {
+    background-color: black;
+    color: white;
+    font-family: roboto;
+}
+
+h1 {
+    font-family: 'Bungee Shade';
+    color: #80cbc4;
+    text-align: center;
+}
+
+/*********************************************************
+    Progress bar
+*********************************************************/
+.progress {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+.progress-dot {
+    position: relative;
+    display: inline-block;
+    
+    animation: moveRight cubic-bezier(.3,.8,.7,.2) 3s infinite;
+}
+
+.progress-dot::before {
+    content: "\25CF";
+    color: #80cbc4;
+}
+
+.progress-dot-a {animation-delay: 0s;}
+.progress-dot-b {animation-delay: 0.15s;}
+.progress-dot-c {animation-delay: 0.3s;}
+.progress-dot-d {animation-delay: 0.45s;}
+.progress-dot-e {animation-delay: 0.6s;}

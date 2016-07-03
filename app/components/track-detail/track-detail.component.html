@@ -1,0 +1,33 @@
+<div *ngIf="loadingTrack" class="progress">
+    <div class="progress-dot progress-dot-a"></div>
+    <div class="progress-dot progress-dot-b"></div>
+    <div class="progress-dot progress-dot-c"></div>
+    <div class="progress-dot progress-dot-d"></div>
+    <div class="progress-dot progress-dot-e"></div>
+</div>
+
+<div id="track-detail">
+    <div id="track-detail-content" *ngIf="track != null">
+        <img id="background-artwork" [style.backgroundImage]="'url(' + track.album.artworks[2].url + ')'"/>
+        <div class="panel panel-info">
+            <div id="back-button">
+                <a [routerLink]="['Search']">
+                    <i class="fa fa-fw fa-chevron-left" aria-hidden="true"></i> Back
+                </a>
+            </div>
+            <h2>{{track.name}}</h2>
+            <h3>by {{getArtistsString()}}</h3>
+            <h4>on {{track.album.name}}</h4>
+            <ul id="track-detail-links">
+                <li>{{previewPlaying ? "Stop" : "Play"}} preview</li>
+                <li><a [href]="track.uri">Open in Spotify</a></li>
+            </ul>
+        </div>
+        <div class="panel">
+            <img [ngClass]="{'album-artwork': true, 'dim': previewPlaying, 'fadeIn-quick': true}" [src]="track.album.artworks[2].url" [title]="track.album.name"/>
+            <div class="preview-playing-icon" *ngIf="previewPlaying">
+                <i class="fa fa-volume-up" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+<div *ngIf="loadingResult" class="progress">
+    <div class="progress-dot progress-dot-a"></div>
+    <div class="progress-dot progress-dot-b"></div>
+    <div class="progress-dot progress-dot-c"></div>
+    <div class="progress-dot progress-dot-d"></div>
+    <div class="progress-dot progress-dot-e"></div>
+</div>
+
+<div id="search">
+    <input type="text" id="search-input" placeholder="Name any track..." [(ngModel)]="searchQuery" />
+    <button id="search-btn" (click)="searchClicked()">Search</button>
+    <br />
+    <span id="search-results" *ngIf="result && result.total">{{result.total}} tracks found</span>
+</div>
+
+<div id="searchError" *ngIf="errorMessage">
+    <h2>Oh snap! An error happened:</h2>
+    <p>{{errorMessage}}</p>
+</div>
+
+<div>
+    <div *ngIf="result && result.total" id="results-list">
+            <div *ngFor="let track of result.items; let idx = index" class="result-item fadeIn-quick"
+            style="background-image: url({{track.album.artworks[1].url}}); animation-delay: {{(idx % result.limit) / result.limit}}s">
+                <a class="track-detail-link" [routerLink]="['TrackDetail', {id: track.id}]"></a>
+                <div class="result-item-content">
+                    {{track.name}}<br/>
+                    on {{track.album.name}}<br/>
+                    by {{track.artists[0].name}}
+                </div>
+            </div>
+            <div *ngIf="!loadingResult && result.next" id="loadNext-btn" (click)="loadNextResult()"
+                class="result-item fadeIn-quick" style="animation-delay: 1s">
+                Load more
+            </div>
+    </div>
+</div>

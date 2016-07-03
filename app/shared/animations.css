@@ -1,0 +1,39 @@
+@-webkit-keyframes fadeIn {from {opacity: 0;} to {opacity: 1;}}
+@-moz-keyframes fadeIn {from {opacity: 0;} to {opacity: 1;}}
+@keyframes fadeIn {from {opacity: 0;} to {opacity: 1;}}
+
+.fadeIn-quick {
+    opacity: 0;
+
+    -webkit-animation: fadeIn ease-in 0.3s 1;
+    -moz-animation: fadeIn ease-in 0.3s 1;
+    animation: fadeIn ease-in 0.3s 1;
+
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes fadeOut {from {opacity: 1;} to {opacity: 0;}}
+@-moz-keyframes fadeOut {from {opacity: 1;} to {opacity: 0;}}
+@keyframes fadeOut {from {opacity: 1;} to {opacity: 0;}}
+
+.fadeOut-quick {
+    opacity: 1;
+
+    -webkit-animation: fadeOut ease-out 0.3s 1;
+    -moz-animation: fadeOut ease-out 0.3s 1;
+    animation: fadeOut ease-out 0.3s 1;
+
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes moveRight {from {left: 0;} to {left: 100%;}}
+@-moz-keyframes moveRight {from {left: 0;} to {left: 100%;}}
+@keyframes moveRight {from {left: 0;} to {left: 100%;}}
+
+.leftToRight-infinite {
+    animation: moveRight cubic-bezier(.3,.8,.7,.2) 3s infinite;
+}
